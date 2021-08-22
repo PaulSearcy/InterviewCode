@@ -1,0 +1,91 @@
+{
+  "name": "interview-react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "mocha --package package.json --timeout 999999 --colors ./src/**/*.test.js",
+    "build": "NODE_ENV='production' webpack"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.14.8",
+    "@babel/core": "^7.15.0",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.14.5",
+    "@babel/plugin-proposal-optional-chaining": "^7.14.5",
+    "@babel/plugin-transform-runtime": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
+    "@babel/preset-react": "^7.14.5",
+    "@babel/register": "^7.15.3",
+    "@dr.pogodin/babel-plugin-react-css-modules": "^6.2.1",
+    "@testing-library/react": "^12.0.0",
+    "babel-loader": "^8.2.2",
+    "chai": "^4.3.4",
+    "clean-webpack-plugin": "^4.0.0-alpha.0",
+    "global-jsdom": "^8.1.0",
+    "html-webpack-plugin": "^5.3.2",
+    "jsdom": "^17.0.0",
+    "mini-css-extract-plugin": "^2.2.0",
+    "mocha": "^9.1.0",
+    "react-hot-loader": "^4.13.0",
+    "sinon": "^11.1.2",
+    "webpack": "^5.51.1",
+    "webpack-cli": "^4.8.0",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-rate-limit": "^5.3.0",
+    "express-winston": "^4.1.0",
+    "helmet": "^4.6.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
+    "winston": "^3.3.3"
+  },
+  "mocha": {
+    "require": [
+      "test/testConfig.js"
+    ],
+    "timeout": "999999",
+    "exit": true
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "useBuiltIns": "entry",
+          "corejs": 3,
+          "targets": {
+            "chrome": "70",
+            "edge": "18",
+            "esmodules": false
+          },
+          "exclude": [
+            "@babel/plugin-transform-classes"
+          ]
+        }
+      ],
+      "@babel/preset-react"
+    ],
+    "plugins": [
+      "@babel/plugin-transform-classes",
+      "@babel/plugin-proposal-optional-chaining",
+      "@babel/plugin-proposal-nullish-coalescing-operator",
+      "react-hot-loader/babel",
+      [
+        "@dr.pogodin/react-css-modules",
+        {
+          "autoResolveMultipleImports": true,
+          "webpackHotModuleReloading": true,
+          "generateScopedName": "[hash:base64:5]"
+        }
+      ]
+    ]
+  }
+}
